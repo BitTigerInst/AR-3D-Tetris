@@ -1,41 +1,39 @@
 # Awesome Project
 
 ## Description
-Use securing confined his shutters. Delightful as he it acceptance an solicitude discretion reasonably. Carriage we husbands advanced an perceive greatest. Totally dearest expense on demesne ye he. Curiosity excellent commanded in me. Unpleasing impression themselves to at assistance acceptance my or. On consider laughter civility offended oh. 
+Using Unity and Vuforia SDK to build a augmented reality tetris game. Recognizing and tracking a marker, the game allow users to play 3D tetris right on their table through handheld displays (iPhone).
 
 ## Plan
 
 ### Todo List
-- [x] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
+- [x] Setup development environment
+- [ ] Marker Tracking, Basic 3D model building, basic tetris game implementation
+- [ ] 3D tetris implementation
+- [ ] UI
+- [ ] Documentation
 
 ### Time Schedule
-Use securing confined his shutters. Delightful as he it acceptance an solicitude discretion reasonably. Carriage we husbands advanced an perceive greatest. Totally dearest expense on demesne ye he.
 
 | Stage | Start  | End | Goals |
 | ------------- | ------------- | ------------- | ------------- |
-| 1 | 02/01/16  | 02/07/16  | Project Selection, Plan Discussion, and Proposal Draft Writing |
-| 2 | 02/08/16  | 02/24/16  | System Design, Resource Discovery, Project Implementation, Document Writing  |
-| 3 | 02/25/16  | 02/29/16  | User Manual Writing and Presentation Making  |
+| 1 | 07/18/16  | 07/24/16  | Project Selection, Plan Discussion, and Proposal Draft Writing |
+| 2 | 07/25/16  | 07/31/16  | System Design, Resource Discovery, Marker Tracking  |
+| 3 | 08/01/16  | 08/07/16  | 2D game with simple 3D model and animation  |
+| 4 | 08/08/16  | 08/14/16  | 3D game with simple 3D model and animation  |
+| 5 | 08/15/16  | 08/21/16  | Using refined 3d model and animation  |
+| 6 | 08/22/16  | 08/28/16  | Documentation, Release the game on App Store  |
 
 ## Resource
-- [BitTiger Project: AppStore - Crawler](https://slack-files.com/T0GUEMKEZ-F0J4G9QTT-274d3bc97e)
-- [Awesome Resource](https://www.google.com/)
+- [BitTiger Project: AR 3D Gift Card](https://www.bittiger.io/videos/WgJ3wYzX5NGiDEkNi/pZZmpXCYiQ6c6ZRdm)
+- [Unity 3D](http://unity3d.com/)
+- [Vuforia SDK](http://www.vuforia.com/)
 
 ## License
-See the [LICENSE](LICENSE.md) file for license rights and limitations (MIT).
+TBD
 
 ## Project Information
-- category: full stack
-- team: Awesome Team
-- description: One sentence description for your awesome project.
-- stack: angular, firebase
+- category: mobile
+- team: ARworks
+- description: 3D AR Tetris game on iPhone.
+- stack: Unity, Vuforia, iOS
 
-> **Note:** 我们使用[爬虫](https://github.com/hackjustu/Project-Markdown-Table-Generator)爬取 `Project Information` 部分的内容并生成项目统计数据。为了方便系统识别，建议`category`和`stack`部分使用下面列举的选项。 如果发现需要别的选项不在列表中，请和我们联系^^
->
->**category options:** 
->full stack, big data, mobile
->
-> **stack options:**
-> android angular aws big_data boostrap cordova css docker firebase flask github grunt html5 ios java javascript jquery meteor mongodb mysql nodejs python react reddis ruby_on_rails ruby spark spring_mvc tomcat windows
