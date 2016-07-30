@@ -34,6 +34,7 @@ Using Unity and Vuforia SDK to build a augmented reality tetris game. Recognizin
 - [BitTiger Project: AR 3D Gift Card](https://www.bittiger.io/videos/WgJ3wYzX5NGiDEkNi/pZZmpXCYiQ6c6ZRdm)
 - [Unity 3D](http://unity3d.com/)
 - [Vuforia SDK](http://www.vuforia.com/)
+- [Tetris Clone Tutorial by The Weekly Coder](https://www.youtube.com/playlist?list=PLiRrp7UEG13axMHD7Kqdiy30c7ZBu_Zn7)
 
 ## License
 TBD
