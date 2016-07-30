@@ -12,7 +12,9 @@ Using Unity and Vuforia SDK to build a augmented reality tetris game. Recognizin
 
 ### Todo List
 - [x] Setup development environment
-- [ ] Marker Tracking, Basic 3D model building, basic tetris game implementation
+- [x] Marker Tracking 
+- [ ] basic 2D tetris game implementation
+- [ ] Basic 3D model building
 - [ ] 3D tetris implementation
 - [ ] UI
 - [ ] Documentation
