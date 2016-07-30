@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{8B45B93F-F64E-9B0E-3393-BE7BA6BED1B0}") = "Tetris Clone 2D", "Assembly-CSharp.csproj", "{DC33F872-57BC-1ED7-3471-45B1BF0AC0DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC33F872-57BC-1ED7-3471-45B1BF0AC0DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC33F872-57BC-1ED7-3471-45B1BF0AC0DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC33F872-57BC-1ED7-3471-45B1BF0AC0DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC33F872-57BC-1ED7-3471-45B1BF0AC0DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
