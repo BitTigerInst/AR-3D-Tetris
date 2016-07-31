@@ -6,6 +6,8 @@ public class Tetromino : MonoBehaviour {
 	float fall = 0;
 	public float fallSpeed = 1;
 
+	public bool allowRotation = true;
+	public bool limitRotation = false;
 
 
 	// Use this for initialization
@@ -43,12 +45,37 @@ public class Tetromino : MonoBehaviour {
 			
 		} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
 
-			transform.Rotate (0, 0, 90);
+			if (allowRotation) {
 
-			if (CheckIsValidPosition ()) {
+				if (limitRotation) {
 
-			} else {
-				transform.Rotate (0, 0, -90);
+					if (transform.rotation.eulerAngles.z >= 90) {
+						transform.Rotate (0, 0, -90);
+					} else {
+						transform.Rotate (0, 0, 90);
+					}
+
+				} else {
+					transform.Rotate (0, 0, 90);
+				}
+
+				// check
+				if (CheckIsValidPosition ()) {
+
+				} else {
+
+					if (limitRotation) {
+						if (transform.rotation.eulerAngles.z >= 90) {
+							transform.Rotate (0, 0, -90);
+						} else {
+							transform.Rotate (0, 0, 90);
+						}
+					} else {
+						transform.Rotate (0, 0, -90);
+					}
+						
+				}
+				
 			}
 			
 		} else if (Input.GetKeyDown (KeyCode.DownArrow) || Time.time - fall >= fallSpeed) {
@@ -59,6 +86,11 @@ public class Tetromino : MonoBehaviour {
 
 			} else {
 				transform.position += new Vector3 (0, 1, 0);
+
+				enabled = false;
+
+				FindObjectOfType<Game> ().SpawnNextTetronimo ();
+
 			}
 
 			fall = Time.time;
