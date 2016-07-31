@@ -11,3 +11,7 @@
 /Users/kk/GitHub/AR-3D-Tetris/Tetris Clone 2D/Temp/bin/Debug/Unity.CecilTools.dll
 /Users/kk/GitHub/AR-3D-Tetris/Tetris Clone 2D/Temp/bin/Debug/Mono.Cecil.Pdb.dll
 /Users/kk/GitHub/AR-3D-Tetris/Tetris Clone 2D/Temp/bin/Debug/Mono.Cecil.Mdb.dll
+/Users/kk/GitHub/AR-3D-Tetris/Tetris Clone 2D/Temp/bin/Debug/Assembly-CSharp.dll.mdb
+/Users/kk/GitHub/AR-3D-Tetris/Tetris Clone 2D/Temp/bin/Debug/Assembly-CSharp.dll
+/Users/kk/GitHub/AR-3D-Tetris/Tetris Clone 2D/obj/Debug/Assembly-CSharp.dll
+/Users/kk/GitHub/AR-3D-Tetris/Tetris Clone 2D/obj/Debug/Assembly-CSharp.dll.mdb
