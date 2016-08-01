@@ -15,10 +15,81 @@ public class Game : MonoBehaviour {
 		SpawnNextTetronimo ();
 
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public bool CheckIsAboveGrid(Tetromino tetromino) {
+
+		// why the for loop?
+
+		foreach (Transform mino in tetromino.transform) {
+
+			Vector2 pos = Round (mino.position);
+
+			if (pos.y > gridHeight - 1) {
+				return true;
+			}
+		}
+
+		return false;
+	}
+
+	public bool IsFullRowAt (int y) {
+
+		for (int x = 0; x < gridWidth; x++) {
+
+			if (grid [x, y] == null) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	public void DeleteMinoAt (int y) {
+		
+		for (int x = 0; x < gridWidth; x++) {
+
+			Destroy (grid [x, y].gameObject);
+
+			grid [x, y] = null;
+		}
+	}
+
+	public void MoveRowDown (int y) {
+
+		for (int x = 0; x < gridWidth; x++) {
+
+			if (grid [x, y] != null) {
+
+				grid [x, y - 1] = grid [x, y];
+
+				grid [x, y] = null;
+
+				grid [x, y - 1].position += new Vector3 (0, -1, 0);
+			}
+		}
+	}
+
+	public void MoveAllRowDown (int y) {
+
+		for (int i = y; i < gridHeight; i++) {
+
+			MoveRowDown (i);
+		}
+	}
+
+	public void DeleteRow () {
+
+		for (int y = 0; y < gridHeight; y++) {
+
+			if (IsFullRowAt (y)) {
+
+				DeleteMinoAt (y);
+
+				MoveAllRowDown (y + 1);
+
+				y--;
+			}
+		}
 	}
 
 	public void UpdateGrid (Tetromino tetromino) {
@@ -46,6 +117,19 @@ public class Game : MonoBehaviour {
 			}
 		}
 
+	}
+
+	public Transform GetTransformAtGridPosition (Vector2 pos) {
+
+		if (pos.y > gridHeight - 1) {
+			
+			return null;
+				
+		} else {
+			
+			return grid[(int) pos.x, (int) pos.y];
+
+		}
 	}
 
 
@@ -93,6 +177,11 @@ public class Game : MonoBehaviour {
 		}
 
 		return randomTetrominoName;
+	}
+
+	public void GameOver() {
+
+		Application.LoadLevel ("GameOver");
 	}
 
 }
