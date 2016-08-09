@@ -18,8 +18,6 @@ public class Game : MonoBehaviour {
 
 	public bool CheckIsAboveGrid(Tetromino tetromino) {
 
-		// why the for loop?
-
 		foreach (Transform mino in tetromino.transform) {
 
 			Vector2 pos = Round (mino.position);
