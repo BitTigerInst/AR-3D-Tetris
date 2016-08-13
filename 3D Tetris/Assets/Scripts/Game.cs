@@ -89,7 +89,7 @@ public class Game : MonoBehaviour {
 
 	public void SpawnNextTetronimo () {
 		
-		GameObject nextTetronimo = (GameObject)Instantiate (Resources.Load (GetRandomTetromino (), typeof(GameObject)), new Vector3 (1.0f, 10.0f, 1.0f), Quaternion.identity);
+		GameObject nextTetronimo = (GameObject)Instantiate (Resources.Load (GetRandomTetromino (), typeof(GameObject)), new Vector3 (1.0f, 12.0f, 1.0f), Quaternion.identity);
 	}
 
 	public bool CheckIsAboveGrid(Tetromino tetromino) {
@@ -179,5 +179,11 @@ public class Game : MonoBehaviour {
 		}
 
 		return randomTetrominoName;
+	}
+
+
+	public void GameOver() {
+
+		Application.LoadLevel ("GameOver");
 	}
 }
