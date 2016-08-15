@@ -47,6 +47,9 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Game.cs" />
      <Compile Include="Assets\Scripts\MenuSystem.cs" />
+     <Compile Include="Assets\Scripts\RotateX.cs" />
+     <Compile Include="Assets\Scripts\RotateY.cs" />
+     <Compile Include="Assets\Scripts\RotateZ.cs" />
      <Compile Include="Assets\Scripts\Tetromino.cs" />
      <Compile Include="Assets\Scripts\TryClick.cs" />
  <Reference Include="UnityEngine.Networking">

@@ -97,43 +97,57 @@ public class Tetromino : MonoBehaviour {
 
 		} else if (Input.GetKeyDown (KeyCode.X)) {
 
-			transform.Rotate (90, 0, 0);
-
-			if (CheckIsValidPosition ()) {
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-				transform.Rotate (-90, 0, 0);
-			}
+			RotateX ();
 
 		} else if (Input.GetKeyDown (KeyCode.Y)) {
 
-			transform.Rotate (0, 90, 0);
-
-			if (CheckIsValidPosition ()) {
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-				transform.Rotate (0, -90, 0);
-			}
+			RotateY ();
 
 		} else if (Input.GetKeyDown (KeyCode.Z)) {
 
-			transform.Rotate (0, 0, 90);
-
-			if (CheckIsValidPosition ()) {
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-				transform.Rotate (0, 0, -90);
-			}
+			RotateZ ();
 		}
 
 	}
 
+	public void RotateX() {
+
+		transform.Rotate (90, 0, 0, Space.World);
+
+		if (CheckIsValidPosition ()) {
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+			transform.Rotate (-90, 0, 0, Space.World);
+		}
+	}
+
+	public void RotateY() {
+		
+		transform.Rotate (0, 90, 0, Space.World);
+
+		if (CheckIsValidPosition ()) {
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+			transform.Rotate (0, -90, 0, Space.World);
+		}
+	}
+
+	public void RotateZ() {
+
+		transform.Rotate (0, 0, 90, Space.World);
+
+		if (CheckIsValidPosition ()) {
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+			transform.Rotate (0, 0, -90, Space.World);
+		}
+	}
 
 	bool CheckIsValidPosition() {
 
