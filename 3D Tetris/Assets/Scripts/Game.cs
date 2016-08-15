@@ -116,10 +116,10 @@ public class Game : MonoBehaviour {
 					if (grid [x, y, z] != null) {
 
 						if (grid [x, y, z].parent == tetromino.transform) {
+							
 							grid [x, y, z] = null;
 						}
 					}
-			
 				}
 			}
 		}
