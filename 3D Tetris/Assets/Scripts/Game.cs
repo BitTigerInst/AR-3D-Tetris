@@ -177,7 +177,7 @@ public class Game : MonoBehaviour {
 			randomTetrominoName = "Prefabs/Tetromino_L";
 			break;
 		case 5:
-			randomTetrominoName = "Prefabs/Tetromino_Long";
+			randomTetrominoName = "Prefabs/Tetromino_T";
 			break;
 		}
 
