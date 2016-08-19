@@ -1,9 +1,9 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MenuSystem.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Game.cs">
     <Files>
-      <File FileName="Assets/Scripts/Game.cs" Line="124" Column="3" />
-      <File FileName="Assets/Scripts/Tetromino.cs" Line="127" Column="2" />
+      <File FileName="Assets/Scripts/Tetromino.cs" Line="14" Column="2" />
+      <File FileName="Assets/Scripts/Game.cs" Line="88" Column="3" />
       <File FileName="Assets/Scripts/MenuSystem.cs" Line="9" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>

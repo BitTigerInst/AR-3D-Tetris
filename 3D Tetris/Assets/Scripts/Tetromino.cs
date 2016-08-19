@@ -78,6 +78,8 @@ public class Tetromino : MonoBehaviour {
 				FindObjectOfType<Game> ().UpdateGrid (this);
 
 			} else {
+
+				Destroy (FindObjectOfType<Shadow> ().gameObject);
 				
 				transform.position += new Vector3 (0, 1, 0);
 

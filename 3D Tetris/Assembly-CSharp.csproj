@@ -50,6 +50,7 @@
      <Compile Include="Assets\Scripts\RotateX.cs" />
      <Compile Include="Assets\Scripts\RotateY.cs" />
      <Compile Include="Assets\Scripts\RotateZ.cs" />
+     <Compile Include="Assets\Scripts\Shadow.cs" />
      <Compile Include="Assets\Scripts\Tetromino.cs" />
      <Compile Include="Assets\Scripts\TryClick.cs" />
      <Compile Include="Assets\Vuforia\Scripts\BackgroundPlaneBehaviour.cs" />
