@@ -88,8 +88,15 @@ public class Game : MonoBehaviour {
 	}
 
 	public void SpawnNextTetronimo () {
-		
-		GameObject nextTetronimo = (GameObject)Instantiate (Resources.Load (GetRandomTetromino (), typeof(GameObject)), new Vector3 (1.0f, 12.0f, 1.0f), Quaternion.identity);
+
+		string nextTetroName = GetRandomTetromino ();
+		string nextTetroPath = "Prefabs/Tetromino_" + nextTetroName;
+		string nextTetroShadowPath = "Prefabs/Shadow_" + "2";
+
+		GameObject nextTetronimo = (GameObject)Instantiate (Resources.Load (nextTetroPath, typeof(GameObject)), new Vector3 (1.0f, 12.0f, 1.0f), Quaternion.identity);
+
+		GameObject nextTetroShadow = (GameObject) Instantiate (Resources.Load(nextTetroShadowPath, typeof(GameObject)), new Vector3(1.0f, 12.0f, 1.0f), Quaternion.identity);
+
 	}
 
 	public bool CheckIsAboveGrid(Tetromino tetromino) {
@@ -160,24 +167,24 @@ public class Game : MonoBehaviour {
 	string GetRandomTetromino () {
 		int randomTetromino = Random.Range (1, 6);
 
-		string randomTetrominoName = "Prefabs/Tetromino_";
+		string randomTetrominoName = "";
 
 		switch (randomTetromino) {
 
 		case 1:
-			randomTetrominoName = "Prefabs/Tetromino_2";
+			randomTetrominoName = "2";
 			break;
 		case 2:
-			randomTetrominoName = "Prefabs/Tetromino_3";
+			randomTetrominoName = "3";
 			break;
 		case 3:
-			randomTetrominoName = "Prefabs/Tetromino_Square";
+			randomTetrominoName = "Square";
 			break;
 		case 4:
-			randomTetrominoName = "Prefabs/Tetromino_L";
+			randomTetrominoName = "L";
 			break;
 		case 5:
-			randomTetrominoName = "Prefabs/Tetromino_T";
+			randomTetrominoName = "T";
 			break;
 		}
 
