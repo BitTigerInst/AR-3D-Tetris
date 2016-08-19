@@ -33,18 +33,12 @@ public class Shadow : MonoBehaviour {
 				return false;
 			}
 
-			if (FindObjectOfType<Game> ().GetTransformAtGridPosition (pos) != null) {
+			Transform transInGrid = FindObjectOfType<Game> ().GetTransformAtGridPosition (pos);
 
-				string tetroName = FindObjectOfType<Game> ().GetTransformAtGridPosition (pos).parent.gameObject.name;
 
-				string tetroTag = tetroName.Split ('_') [1];
+			if (transInGrid != null && !FindObjectOfType<Tetromino>().gameObject.Equals(transInGrid.parent.gameObject)) {
 
-				string shadowTag = name.Split ('_') [1];
-
-				if (!tetroTag.Equals (shadowTag)) {
-
-					return false;
-				}
+				return false;
 			}
 
 		}
