@@ -91,7 +91,7 @@ public class Game : MonoBehaviour {
 
 		string nextTetroName = GetRandomTetromino ();
 		string nextTetroPath = "Prefabs/Tetromino_" + nextTetroName;
-		string nextTetroShadowPath = "Prefabs/Shadow_" + "2";
+		string nextTetroShadowPath = "Prefabs/Shadow_" + nextTetroName;
 
 		GameObject nextTetronimo = (GameObject)Instantiate (Resources.Load (nextTetroPath, typeof(GameObject)), new Vector3 (1.0f, 12.0f, 1.0f), Quaternion.identity);
 

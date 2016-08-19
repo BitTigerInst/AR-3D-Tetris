@@ -41,8 +41,6 @@ public class Shadow : MonoBehaviour {
 
 				string shadowTag = name.Split ('_') [1];
 
-
-
 				if (!tetroTag.Equals (shadowTag)) {
 
 					return false;
