@@ -10,6 +10,7 @@ public class Tetromino : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+
 	}
 
 	// Update is called once per frame
@@ -21,53 +22,19 @@ public class Tetromino : MonoBehaviour {
 	void CheckUserInput () {
 		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
 
-			transform.position += new Vector3 (-1, 0, 0);
-
-			if (CheckIsValidPosition ()) {
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-				transform.position += new Vector3 (1, 0, 0);
-			}
-
+			MoveXNeg ();
 
 		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
 
-			transform.position += new Vector3 (1, 0, 0);
-
-			if (CheckIsValidPosition ()) {
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-				transform.position += new Vector3 (-1, 0, 0);
-			}
-
+			MoveXPos ();
 
 		} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
 
-			transform.position += new Vector3 (0, 0, 1);
-
-			if (CheckIsValidPosition ()) {
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-				transform.position += new Vector3 (0, 0, -1);
-			}
+			MoveZPos ();
 
 		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
 
-			transform.position += new Vector3 (0, 0, -1);
-
-			if (CheckIsValidPosition ()) {
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-				transform.position += new Vector3 (0, 0, 1);
-			}
+			MoveZNeg ();
 
 		} else if (Input.GetKeyDown(KeyCode.Space) || Time.time - fall >= fallSpeed) {
 
@@ -112,7 +79,59 @@ public class Tetromino : MonoBehaviour {
 
 	}
 
-	public void RotateX() {
+	public void MoveXPos () {
+
+		transform.position += new Vector3 (1, 0, 0);
+
+		if (CheckIsValidPosition ()) {
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+			transform.position += new Vector3 (-1, 0, 0);
+		}
+	}
+
+	public void MoveXNeg () {
+
+		transform.position += new Vector3 (-1, 0, 0);
+
+		if (CheckIsValidPosition ()) {
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+			transform.position += new Vector3 (1, 0, 0);
+		}
+	}
+
+	public void MoveZPos () {
+
+		transform.position += new Vector3 (0, 0, 1);
+
+		if (CheckIsValidPosition ()) {
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+			transform.position += new Vector3 (0, 0, -1);
+		}
+	}
+
+	public void MoveZNeg () {
+
+		transform.position += new Vector3 (0, 0, -1);
+
+		if (CheckIsValidPosition ()) {
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+			transform.position += new Vector3 (0, 0, 1);
+		}
+	}
+
+	public void RotateX () {
 
 		transform.Rotate (90, 0, 0, Space.World);
 
