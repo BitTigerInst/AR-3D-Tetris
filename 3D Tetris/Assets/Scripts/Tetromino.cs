@@ -6,6 +6,9 @@ public class Tetromino : MonoBehaviour {
 	float fall = 0;
 	public float fallSpeed = 1;
 
+	public int individualScore = 100;
+
+	private float individualScoreTime;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +20,24 @@ public class Tetromino : MonoBehaviour {
 	void Update () {
 		
 		CheckUserInput ();
+
+		UpdateIndividualScore ();
+	}
+
+	void UpdateIndividualScore () {
+
+		if (individualScoreTime < 1) {
+
+			individualScoreTime += Time.deltaTime;
+
+		} else {
+
+			individualScoreTime = 0;
+
+			individualScore = Mathf.Max (individualScore - 10, 0);
+		}
+			
+
 	}
 
 	void CheckUserInput () {
@@ -58,6 +79,8 @@ public class Tetromino : MonoBehaviour {
 				}
 
 				enabled = false;
+
+				Game.currentScore += individualScore;
 
 				FindObjectOfType<Game> ().SpawnNextTetronimo ();
 			}

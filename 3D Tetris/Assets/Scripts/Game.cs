@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
 
@@ -7,6 +8,17 @@ public class Game : MonoBehaviour {
 	public static int gridHeight = 12;
 
 	public static Transform[ , , ] grid = new Transform[gridWidth, gridHeight, gridWidth];
+
+	public int scoreOneLine = 100;
+	public int scoreTwoLine = 300;
+	public int scoreThreeLine = 500;
+
+	private int numberOfRowsThisTurn = 0;
+
+	public Text hud_score;
+
+	public static int currentScore = 0;
+
 
 	// Use this for initialization
 	void Start () {
@@ -16,8 +28,58 @@ public class Game : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+
+		UpdateScore ();
+
+		UpdateUI ();
 	}
+
+	public void UpdateUI () {
+
+		hud_score.text = currentScore.ToString ();
+	}
+
+	public void UpdateScore () {
+
+		if (numberOfRowsThisTurn > 0) {
+
+			if (numberOfRowsThisTurn == 1) {
+
+				ClearedOneRow ();
+				
+			} else if (numberOfRowsThisTurn == 2) {
+
+				ClearedTwoRows ();
+				
+			} else if (numberOfRowsThisTurn == 3) {
+
+				ClearedThreeRows ();
+				
+			}
+				
+			numberOfRowsThisTurn = 0;
+		}
+
+
+	}
+
+	public void ClearedOneRow () {
+
+		currentScore += scoreOneLine;
+		
+	}
+
+	public void ClearedTwoRows () {
+
+		currentScore += scoreTwoLine;
+		
+	}
+
+	public void ClearedThreeRows () {
+
+		currentScore += scoreThreeLine;
+	}
+
 
 
 	public void DeleteRow () {
@@ -46,6 +108,9 @@ public class Game : MonoBehaviour {
 			}
 		}
 
+		// found one row full
+		numberOfRowsThisTurn++;
+
 		return true;
 	}
 
@@ -68,8 +133,7 @@ public class Game : MonoBehaviour {
 			MoveRowDown (i);
 		}
 	}
-
-
+		
 	public void MoveRowDown(int y) {
 
 		for (int x = 0; x < gridWidth; x++) {
@@ -112,8 +176,7 @@ public class Game : MonoBehaviour {
 
 		return false;
 	}
-
-
+		
 	public void UpdateGrid (Tetromino tetromino) {
 
 		for (int y = 0; y < gridHeight; y++) {
@@ -141,8 +204,7 @@ public class Game : MonoBehaviour {
 		}
 
 	}
-
-
+		
 	public Transform GetTransformAtGridPosition (Vector3 pos) {
 
 		if (pos.y > gridHeight - 1) {
