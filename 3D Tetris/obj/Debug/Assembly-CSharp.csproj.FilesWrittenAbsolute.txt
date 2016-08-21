@@ -1,0 +1,14 @@
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/UnityEngine.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/UnityEditor.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/UnityEngine.Networking.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/UnityEngine.UI.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Vuforia.UnityExtensions.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Mono.Cecil.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Unity.SerializationLogic.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Unity.DataContract.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/ICSharpCode.NRefactory.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Unity.UNetWeaver.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Unity.UNetWeaver.dll.mdb
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Unity.CecilTools.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Mono.Cecil.Pdb.dll
+/Users/kk/GitHub/AR-3D-Tetris/3D Tetris/Temp/bin/Debug/Mono.Cecil.Mdb.dll
