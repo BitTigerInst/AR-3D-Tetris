@@ -16,8 +16,8 @@ Using Unity and Vuforia SDK to build an augmented reality tetris game. Recognizi
 - [x] basic 2D tetris game implementation
 - [x] 2D tetris game using 3D model
 - [x] 3D tetris basic implementation
-- [ ] advanced feature like scoring and sound system
-- [ ] UI
+- [x] Scoring system
+- [ ] Advanced features and UI
 - [ ] Documentation
 
 ### Time Schedule
