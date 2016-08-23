@@ -10,9 +10,17 @@ public class Tetromino : MonoBehaviour {
 
 	private float individualScoreTime;
 
+	public AudioClip moveSound;
+	public AudioClip rotateSound;
+	public AudioClip landSound;
+
+	private AudioSource audioSource;
+
+
 	// Use this for initialization
 	void Start () {
 
+		audioSource = GetComponent<AudioSource> ();
 
 	}
 
@@ -63,9 +71,16 @@ public class Tetromino : MonoBehaviour {
 
 			if (CheckIsValidPosition ()) {
 
+				if (Input.GetKeyDown (KeyCode.Space)) {
+
+					PlayMoveAudio ();
+				}
+
 				FindObjectOfType<Game> ().UpdateGrid (this);
 
 			} else {
+
+				PlayLandAudio ();
 
 				Destroy (FindObjectOfType<Shadow> ().gameObject);
 				
@@ -108,6 +123,8 @@ public class Tetromino : MonoBehaviour {
 
 		if (CheckIsValidPosition ()) {
 
+			PlayMoveAudio ();
+
 			FindObjectOfType<Game> ().UpdateGrid (this);
 
 		} else {
@@ -120,6 +137,8 @@ public class Tetromino : MonoBehaviour {
 		transform.position += new Vector3 (-1, 0, 0);
 
 		if (CheckIsValidPosition ()) {
+
+			PlayMoveAudio ();
 
 			FindObjectOfType<Game> ().UpdateGrid (this);
 
@@ -134,6 +153,8 @@ public class Tetromino : MonoBehaviour {
 
 		if (CheckIsValidPosition ()) {
 
+			PlayMoveAudio ();
+
 			FindObjectOfType<Game> ().UpdateGrid (this);
 
 		} else {
@@ -146,6 +167,8 @@ public class Tetromino : MonoBehaviour {
 		transform.position += new Vector3 (0, 0, -1);
 
 		if (CheckIsValidPosition ()) {
+
+			PlayMoveAudio ();
 
 			FindObjectOfType<Game> ().UpdateGrid (this);
 
@@ -160,6 +183,8 @@ public class Tetromino : MonoBehaviour {
 
 		if (CheckIsValidPosition ()) {
 
+			PlayRotateAudio ();
+
 			FindObjectOfType<Game> ().UpdateGrid (this);
 
 		} else {
@@ -167,11 +192,13 @@ public class Tetromino : MonoBehaviour {
 		}
 	}
 
-	public void RotateY() {
+	public void RotateY () {
 		
 		transform.Rotate (0, 90, 0, Space.World);
 
 		if (CheckIsValidPosition ()) {
+
+			PlayRotateAudio ();
 
 			FindObjectOfType<Game> ().UpdateGrid (this);
 
@@ -180,11 +207,13 @@ public class Tetromino : MonoBehaviour {
 		}
 	}
 
-	public void RotateZ() {
+	public void RotateZ () {
 
 		transform.Rotate (0, 0, 90, Space.World);
 
 		if (CheckIsValidPosition ()) {
+
+			PlayRotateAudio ();
 
 			FindObjectOfType<Game> ().UpdateGrid (this);
 
@@ -193,7 +222,23 @@ public class Tetromino : MonoBehaviour {
 		}
 	}
 
-	bool CheckIsValidPosition() {
+
+	void PlayMoveAudio () {
+
+		audioSource.PlayOneShot (moveSound);
+	}
+
+	void PlayRotateAudio () {
+
+		audioSource.PlayOneShot (rotateSound);
+	}
+
+	void PlayLandAudio () {
+		
+		audioSource.PlayOneShot (landSound);
+	}
+
+	bool CheckIsValidPosition () {
 
 		foreach (Transform mino in transform) {
 
