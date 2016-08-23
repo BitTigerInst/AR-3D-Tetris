@@ -19,11 +19,17 @@ public class Game : MonoBehaviour {
 
 	public static int currentScore = 0;
 
+	public AudioClip clearRowSound;
+
+	private AudioSource audioSource;
+
 
 	// Use this for initialization
 	void Start () {
 
 		SpawnNextTetronimo ();
+
+		audioSource = GetComponent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -58,6 +64,8 @@ public class Game : MonoBehaviour {
 			}
 				
 			numberOfRowsThisTurn = 0;
+
+			PlayClearRowAudio ();
 		}
 
 
@@ -80,7 +88,10 @@ public class Game : MonoBehaviour {
 		currentScore += scoreThreeLine;
 	}
 
+	public void PlayClearRowAudio () {
 
+		audioSource.PlayOneShot (clearRowSound);
+	}
 
 	public void DeleteRow () {
 
