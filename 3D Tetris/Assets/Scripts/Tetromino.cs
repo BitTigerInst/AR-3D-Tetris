@@ -16,6 +16,17 @@ public class Tetromino : MonoBehaviour {
 
 	private AudioSource audioSource;
 
+	private float continuosVerticalSpeed = 0.05f;
+	private float continuosHorizontalSpeed = 0.1f;
+	private float buttonDownWaitMax = 0.2f;
+
+	private float verticalTimer = 0;
+	private float horizontalTimer = 0;
+	private float buttonDownWaitTimer = 0;
+
+	private bool movedImmediateHorizontal = false;
+	private bool movedImmediateVertical = false;
+
 
 	// Use this for initialization
 	void Start () {
@@ -49,29 +60,148 @@ public class Tetromino : MonoBehaviour {
 	}
 
 	void CheckUserInput () {
-		if (Input.GetKeyDown (KeyCode.LeftArrow)) {
+
+		if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyUp (KeyCode.Space)) {
+
+			horizontalTimer = 0;
+			verticalTimer = 0;
+			buttonDownWaitTimer = 0;
+
+			movedImmediateHorizontal = false;
+			movedImmediateVertical = false;
+		}
+
+		if (Input.GetKey (KeyCode.LeftArrow)) {
+
+			if (movedImmediateHorizontal) {
+
+				if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+					buttonDownWaitTimer += Time.deltaTime;
+					return;
+				}
+
+				if (horizontalTimer < continuosHorizontalSpeed) {
+
+					horizontalTimer += Time.deltaTime;
+
+					return;
+				}
+			}
+
+			if (!movedImmediateHorizontal) {
+				movedImmediateHorizontal = true;
+			}
+
+			horizontalTimer = 0;
 
 			MoveXNeg ();
 
-		} else if (Input.GetKeyDown (KeyCode.RightArrow)) {
+		} else if (Input.GetKey (KeyCode.RightArrow)) {
+
+			if (movedImmediateHorizontal) {
+
+				if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+					buttonDownWaitTimer += Time.deltaTime;
+					return;
+				}
+
+				if (horizontalTimer < continuosHorizontalSpeed) {
+
+					horizontalTimer += Time.deltaTime;
+
+					return;
+				}
+			}
+
+			if (!movedImmediateHorizontal) {
+				movedImmediateHorizontal = true;
+			}
+
+			horizontalTimer = 0;
 
 			MoveXPos ();
 
-		} else if (Input.GetKeyDown (KeyCode.UpArrow)) {
+		} else if (Input.GetKey (KeyCode.UpArrow)) {
+
+			if (movedImmediateHorizontal) {
+
+				if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+					buttonDownWaitTimer += Time.deltaTime;
+					return;
+				}
+
+				if (horizontalTimer < continuosHorizontalSpeed) {
+
+					horizontalTimer += Time.deltaTime;
+
+					return;
+				}
+			}
+
+			if (!movedImmediateHorizontal) {
+				movedImmediateHorizontal = true;
+			}
+
+			horizontalTimer = 0;
 
 			MoveZPos ();
 
-		} else if (Input.GetKeyDown (KeyCode.DownArrow)) {
+		} else if (Input.GetKey (KeyCode.DownArrow)) {
+
+			if (movedImmediateHorizontal) {
+
+				if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+					buttonDownWaitTimer += Time.deltaTime;
+					return;
+				}
+
+				if (horizontalTimer < continuosHorizontalSpeed) {
+
+					horizontalTimer += Time.deltaTime;
+
+					return;
+				}
+			}
+
+			if (!movedImmediateHorizontal) {
+				movedImmediateHorizontal = true;
+			}
+
+			horizontalTimer = 0;
 
 			MoveZNeg ();
 
-		} else if (Input.GetKeyDown(KeyCode.Space) || Time.time - fall >= fallSpeed) {
+		} else if (Input.GetKey (KeyCode.Space) || Time.time - fall >= fallSpeed) {
+
+			if (movedImmediateVertical) {
+
+				if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+					buttonDownWaitTimer += Time.deltaTime;
+					return;
+				}
+
+				if (verticalTimer < continuosVerticalSpeed) {
+
+					verticalTimer += Time.deltaTime;
+					return;
+				}
+			}
+
+			if (!movedImmediateVertical) {
+				movedImmediateVertical = true;
+			}
+			verticalTimer = 0;
 
 			transform.position += new Vector3 (0, -1, 0);
 
 			if (CheckIsValidPosition ()) {
 
-				if (Input.GetKeyDown (KeyCode.Space)) {
+				if (Input.GetKey (KeyCode.Space)) {
 
 					PlayMoveAudio ();
 				}
@@ -116,6 +246,8 @@ public class Tetromino : MonoBehaviour {
 		}
 
 	}
+
+
 
 	public void MoveXPos () {
 
