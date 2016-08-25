@@ -33,7 +33,7 @@ public class Game : MonoBehaviour {
 	private Vector3 initTetrominoPosition = new Vector3 (1.0f, 12.0f, 1.0f);
 	private Vector3 previewTetrominoPosition = new Vector3 (-5.0f, -1.0f, 6.0f);
 
-
+	public GameObject liveTetromino;
 
 	// Use this for initialization
 	void Start () {
@@ -187,7 +187,6 @@ public class Game : MonoBehaviour {
 
 			GameObject nextTetroShadow = (GameObject) Instantiate (Resources.Load(nextTetroShadowPath, typeof(GameObject)), initTetrominoPosition, Quaternion.identity);
 
-
 			//- preview tetromino
 			previewTetrominoName = GetRandomTetromino ();
 			string previewTetroPath = "Prefabs/Tetromino_" + previewTetrominoName;
@@ -213,6 +212,8 @@ public class Game : MonoBehaviour {
 			previewTetromino.GetComponent<Tetromino>().enabled = false;
 
 		}
+
+		liveTetromino = nextTetromino;
 
 
 	}

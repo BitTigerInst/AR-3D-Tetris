@@ -15,7 +15,7 @@ public class Buttons : MonoBehaviour {
 
 	void OnMouseDown() {
 
-		Tetromino tetro = FindObjectOfType<Tetromino> ();
+		Tetromino tetro = FindObjectOfType<Game> ().liveTetromino.GetComponent<Tetromino>();
 
 		switch (name) {
 
