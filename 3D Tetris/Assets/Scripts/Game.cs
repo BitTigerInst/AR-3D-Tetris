@@ -24,6 +24,17 @@ public class Game : MonoBehaviour {
 	private AudioSource audioSource;
 
 
+	private GameObject nextTetromino;
+	private GameObject previewTetromino;
+	private string previewTetrominoName;
+
+	private bool gameStarted = false;
+
+	private Vector3 initTetrominoPosition = new Vector3 (1.0f, 12.0f, 1.0f);
+	private Vector3 previewTetrominoPosition = new Vector3 (-5.0f, -1.0f, 6.0f);
+
+
+
 	// Use this for initialization
 	void Start () {
 
@@ -164,13 +175,45 @@ public class Game : MonoBehaviour {
 
 	public void SpawnNextTetronimo () {
 
-		string nextTetroName = GetRandomTetromino ();
-		string nextTetroPath = "Prefabs/Tetromino_" + nextTetroName;
-		string nextTetroShadowPath = "Prefabs/Shadow_" + nextTetroName;
+		if (!gameStarted) {
 
-		GameObject nextTetronimo = (GameObject)Instantiate (Resources.Load (nextTetroPath, typeof(GameObject)), new Vector3 (1.0f, 12.0f, 1.0f), Quaternion.identity);
+			gameStarted = true;
 
-		GameObject nextTetroShadow = (GameObject) Instantiate (Resources.Load(nextTetroShadowPath, typeof(GameObject)), new Vector3(1.0f, 12.0f, 1.0f), Quaternion.identity);
+			string nextTetroName = GetRandomTetromino ();
+			string nextTetroPath = "Prefabs/Tetromino_" + nextTetroName;
+			string nextTetroShadowPath = "Prefabs/Shadow_" + nextTetroName;
+
+			nextTetromino = (GameObject)Instantiate (Resources.Load (nextTetroPath, typeof(GameObject)), initTetrominoPosition, Quaternion.identity);
+
+			GameObject nextTetroShadow = (GameObject) Instantiate (Resources.Load(nextTetroShadowPath, typeof(GameObject)), initTetrominoPosition, Quaternion.identity);
+
+
+			//- preview tetromino
+			previewTetrominoName = GetRandomTetromino ();
+			string previewTetroPath = "Prefabs/Tetromino_" + previewTetrominoName;
+
+			previewTetromino = (GameObject)Instantiate (Resources.Load (previewTetroPath, typeof(GameObject)), previewTetrominoPosition, Quaternion.identity);
+			previewTetromino.GetComponent<Tetromino>().enabled = false;
+
+		} else {
+
+			previewTetromino.transform.localPosition = initTetrominoPosition;
+			nextTetromino = previewTetromino;
+			nextTetromino.GetComponent<Tetromino> ().enabled = true;
+
+			string nextTetroShadowPath = "Prefabs/Shadow_" + previewTetrominoName;
+			GameObject nextTetroShadow = (GameObject) Instantiate (Resources.Load(nextTetroShadowPath, typeof(GameObject)), initTetrominoPosition, Quaternion.identity);
+
+
+			//- preview tetromino
+			previewTetrominoName = GetRandomTetromino ();
+			string previewTetroPath = "Prefabs/Tetromino_" + previewTetrominoName;
+
+			previewTetromino = (GameObject)Instantiate (Resources.Load (previewTetroPath, typeof(GameObject)), previewTetrominoPosition, Quaternion.identity);
+			previewTetromino.GetComponent<Tetromino>().enabled = false;
+
+		}
+
 
 	}
 

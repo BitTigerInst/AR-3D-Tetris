@@ -210,10 +210,10 @@ public class Tetromino : MonoBehaviour {
 
 			} else {
 
-				PlayLandAudio ();
-
 				Destroy (FindObjectOfType<Shadow> ().gameObject);
-				
+
+				PlayLandAudio ();
+							
 				transform.position += new Vector3 (0, 1, 0);
 
 				FindObjectOfType<Game> ().DeleteRow ();

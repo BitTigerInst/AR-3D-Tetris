@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Shadow : MonoBehaviour {
 
+	Tetromino liveTetro;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -11,8 +13,22 @@ public class Shadow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		transform.position = FindObjectOfType<Tetromino> ().transform.position;
-		transform.rotation = FindObjectOfType<Tetromino> ().transform.rotation;
+		Tetromino[] tetros = FindObjectsOfType<Tetromino> ();
+
+
+		liveTetro = new Tetromino();
+
+		foreach (Tetromino tetro in tetros) {
+
+			if (tetro.GetComponent<Tetromino> ().enabled == true) {
+
+				liveTetro = tetro;
+				break;
+			}
+		}
+			
+		transform.position = liveTetro.transform.position;
+		transform.rotation = liveTetro.transform.rotation;
 
 		while (CheckIsValidPosition ()) {
 
@@ -36,7 +52,7 @@ public class Shadow : MonoBehaviour {
 			Transform transInGrid = FindObjectOfType<Game> ().GetTransformAtGridPosition (pos);
 
 
-			if (transInGrid != null && !FindObjectOfType<Tetromino>().gameObject.Equals(transInGrid.parent.gameObject)) {
+			if (transInGrid != null && !liveTetro.gameObject.Equals(transInGrid.parent.gameObject)) {
 
 				return false;
 			}
