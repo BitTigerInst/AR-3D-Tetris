@@ -4,7 +4,7 @@ using System.Collections;
 public class Tetromino : MonoBehaviour {
 
 	float fall = 0;
-	public float fallSpeed = 1;
+	private float fallSpeed;
 
 	public int individualScore = 100;
 
@@ -22,7 +22,8 @@ public class Tetromino : MonoBehaviour {
 
 	private float verticalTimer = 0;
 	private float horizontalTimer = 0;
-	private float buttonDownWaitTimer = 0;
+	private float buttonDownWaitTimerHorizontal = 0;
+	private float buttonDownWaitTimerVertical = 0;
 
 	private bool movedImmediateHorizontal = false;
 	private bool movedImmediateVertical = false;
@@ -32,6 +33,8 @@ public class Tetromino : MonoBehaviour {
 	void Start () {
 
 		audioSource = GetComponent<AudioSource> ();
+
+		fallSpeed = FindObjectOfType<Game> ().fallSpeed;
 
 	}
 
@@ -61,45 +64,59 @@ public class Tetromino : MonoBehaviour {
 
 	void CheckUserInput () {
 
-		if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.DownArrow) || Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.DownArrow)) {
 
 			horizontalTimer = 0;
-			verticalTimer = 0;
-			buttonDownWaitTimer = 0;
-
 			movedImmediateHorizontal = false;
-			movedImmediateVertical = false;
+			buttonDownWaitTimerHorizontal = 0;
 		}
 
+		if (Input.GetKeyUp (KeyCode.Space)) {
+
+			verticalTimer = 0;
+			movedImmediateVertical = false;
+			buttonDownWaitTimerVertical = 0;
+		}
+
+		//- Moving in four directions
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 
 			MoveXNeg ();
+		} 
 
-		} else if (Input.GetKey (KeyCode.RightArrow)) {
+		if (Input.GetKey (KeyCode.RightArrow)) {
 
 			MoveXPos ();
+		} 
 
-		} else if (Input.GetKey (KeyCode.UpArrow)) {
+		if (Input.GetKey (KeyCode.UpArrow)) {
 			
 			MoveZPos ();
+		}
 
-		} else if (Input.GetKey (KeyCode.DownArrow)) {
+		if (Input.GetKey (KeyCode.DownArrow)) {
 			
 			MoveZNeg ();
+		} 
 
-		} else if (Input.GetKey (KeyCode.Space) || Time.time - fall >= fallSpeed) {
+		//- Moving down
+		if (Input.GetKey (KeyCode.Space) || Time.time - fall >= fallSpeed) {
 
 			MoveDown ();
+		}
 
-		} else if (Input.GetKeyDown (KeyCode.X)) {
+		//- Rotatoin along three axis
+		if (Input.GetKeyDown (KeyCode.X)) {
 
 			RotateX ();
+		}
 
-		} else if (Input.GetKeyDown (KeyCode.Y)) {
+		if (Input.GetKeyDown (KeyCode.Y)) {
 
 			RotateY ();
+		} 
 
-		} else if (Input.GetKeyDown (KeyCode.Z)) {
+		if (Input.GetKeyDown (KeyCode.Z)) {
 
 			RotateZ ();
 		}
@@ -114,9 +131,9 @@ public class Tetromino : MonoBehaviour {
 
 		if (movedImmediateVertical) {
 
-			if (buttonDownWaitTimer < buttonDownWaitMax) {
+			if (buttonDownWaitTimerVertical < buttonDownWaitMax) {
 
-				buttonDownWaitTimer += Time.deltaTime;
+				buttonDownWaitTimerVertical += Time.deltaTime;
 				return;
 			}
 
@@ -172,9 +189,9 @@ public class Tetromino : MonoBehaviour {
 
 		if (movedImmediateHorizontal) {
 
-			if (buttonDownWaitTimer < buttonDownWaitMax) {
+			if (buttonDownWaitTimerHorizontal < buttonDownWaitMax) {
 
-				buttonDownWaitTimer += Time.deltaTime;
+				buttonDownWaitTimerHorizontal += Time.deltaTime;
 				return;
 			}
 
@@ -209,9 +226,9 @@ public class Tetromino : MonoBehaviour {
 
 		if (movedImmediateHorizontal) {
 
-			if (buttonDownWaitTimer < buttonDownWaitMax) {
+			if (buttonDownWaitTimerHorizontal < buttonDownWaitMax) {
 
-				buttonDownWaitTimer += Time.deltaTime;
+				buttonDownWaitTimerHorizontal += Time.deltaTime;
 				return;
 			}
 
@@ -246,9 +263,9 @@ public class Tetromino : MonoBehaviour {
 
 		if (movedImmediateHorizontal) {
 
-			if (buttonDownWaitTimer < buttonDownWaitMax) {
+			if (buttonDownWaitTimerHorizontal < buttonDownWaitMax) {
 
-				buttonDownWaitTimer += Time.deltaTime;
+				buttonDownWaitTimerHorizontal += Time.deltaTime;
 				return;
 			}
 
@@ -283,9 +300,9 @@ public class Tetromino : MonoBehaviour {
 
 		if (movedImmediateHorizontal) {
 
-			if (buttonDownWaitTimer < buttonDownWaitMax) {
+			if (buttonDownWaitTimerHorizontal < buttonDownWaitMax) {
 
-				buttonDownWaitTimer += Time.deltaTime;
+				buttonDownWaitTimerHorizontal += Time.deltaTime;
 				return;
 			}
 

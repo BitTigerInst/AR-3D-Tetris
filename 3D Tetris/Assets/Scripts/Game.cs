@@ -4,6 +4,11 @@ using UnityEngine.UI;
 
 public class Game : MonoBehaviour {
 
+	public float fallSpeed = 1.0f;
+
+	public int currentLevel = 0;
+	private int numOfRowsCleared = 0;
+
 	public static int gridWidth = 4;
 	public static int gridHeight = 12;
 
@@ -49,6 +54,20 @@ public class Game : MonoBehaviour {
 		UpdateScore ();
 
 		UpdateUI ();
+
+		UpdateLevel ();
+
+		UpdateSpeed ();
+	}
+
+	void UpdateLevel () {
+
+		currentLevel = numOfRowsCleared / 10;
+	}
+
+	void UpdateSpeed () {
+
+		fallSpeed = 1.0f - ((float)currentLevel * 0.1f);
 	}
 
 	public void UpdateUI () {
@@ -85,18 +104,22 @@ public class Game : MonoBehaviour {
 	public void ClearedOneRow () {
 
 		currentScore += scoreOneLine;
-		
+
+		numOfRowsCleared++;
 	}
 
 	public void ClearedTwoRows () {
 
 		currentScore += scoreTwoLine;
-		
+
+		numOfRowsCleared += 2;
 	}
 
 	public void ClearedThreeRows () {
 
 		currentScore += scoreThreeLine;
+
+		numOfRowsCleared += 3;
 	}
 
 	public void PlayClearRowAudio () {
