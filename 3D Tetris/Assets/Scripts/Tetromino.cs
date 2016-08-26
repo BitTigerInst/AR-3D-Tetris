@@ -73,164 +73,23 @@ public class Tetromino : MonoBehaviour {
 
 		if (Input.GetKey (KeyCode.LeftArrow)) {
 
-			if (movedImmediateHorizontal) {
-
-				if (buttonDownWaitTimer < buttonDownWaitMax) {
-
-					buttonDownWaitTimer += Time.deltaTime;
-					return;
-				}
-
-				if (horizontalTimer < continuosHorizontalSpeed) {
-
-					horizontalTimer += Time.deltaTime;
-
-					return;
-				}
-			}
-
-			if (!movedImmediateHorizontal) {
-				movedImmediateHorizontal = true;
-			}
-
-			horizontalTimer = 0;
-
 			MoveXNeg ();
 
 		} else if (Input.GetKey (KeyCode.RightArrow)) {
 
-			if (movedImmediateHorizontal) {
-
-				if (buttonDownWaitTimer < buttonDownWaitMax) {
-
-					buttonDownWaitTimer += Time.deltaTime;
-					return;
-				}
-
-				if (horizontalTimer < continuosHorizontalSpeed) {
-
-					horizontalTimer += Time.deltaTime;
-
-					return;
-				}
-			}
-
-			if (!movedImmediateHorizontal) {
-				movedImmediateHorizontal = true;
-			}
-
-			horizontalTimer = 0;
-
 			MoveXPos ();
 
 		} else if (Input.GetKey (KeyCode.UpArrow)) {
-
-			if (movedImmediateHorizontal) {
-
-				if (buttonDownWaitTimer < buttonDownWaitMax) {
-
-					buttonDownWaitTimer += Time.deltaTime;
-					return;
-				}
-
-				if (horizontalTimer < continuosHorizontalSpeed) {
-
-					horizontalTimer += Time.deltaTime;
-
-					return;
-				}
-			}
-
-			if (!movedImmediateHorizontal) {
-				movedImmediateHorizontal = true;
-			}
-
-			horizontalTimer = 0;
-
+			
 			MoveZPos ();
 
 		} else if (Input.GetKey (KeyCode.DownArrow)) {
-
-			if (movedImmediateHorizontal) {
-
-				if (buttonDownWaitTimer < buttonDownWaitMax) {
-
-					buttonDownWaitTimer += Time.deltaTime;
-					return;
-				}
-
-				if (horizontalTimer < continuosHorizontalSpeed) {
-
-					horizontalTimer += Time.deltaTime;
-
-					return;
-				}
-			}
-
-			if (!movedImmediateHorizontal) {
-				movedImmediateHorizontal = true;
-			}
-
-			horizontalTimer = 0;
-
+			
 			MoveZNeg ();
 
 		} else if (Input.GetKey (KeyCode.Space) || Time.time - fall >= fallSpeed) {
 
-			if (movedImmediateVertical) {
-
-				if (buttonDownWaitTimer < buttonDownWaitMax) {
-
-					buttonDownWaitTimer += Time.deltaTime;
-					return;
-				}
-
-				if (verticalTimer < continuosVerticalSpeed) {
-
-					verticalTimer += Time.deltaTime;
-					return;
-				}
-			}
-
-			if (!movedImmediateVertical) {
-				movedImmediateVertical = true;
-			}
-			verticalTimer = 0;
-
-			transform.position += new Vector3 (0, -1, 0);
-
-			if (CheckIsValidPosition ()) {
-
-				if (Input.GetKey (KeyCode.Space)) {
-
-					PlayMoveAudio ();
-				}
-
-				FindObjectOfType<Game> ().UpdateGrid (this);
-
-			} else {
-
-				Destroy (FindObjectOfType<Shadow> ().gameObject);
-
-				PlayLandAudio ();
-							
-				transform.position += new Vector3 (0, 1, 0);
-
-				FindObjectOfType<Game> ().DeleteRow ();
-
-				if (FindObjectOfType<Game> ().CheckIsAboveGrid (this)) {
-
-					FindObjectOfType<Game> ().GameOver ();
-				}
-
-				enabled = false;
-
-				Game.currentScore += individualScore;
-
-				FindObjectOfType<Game> ().SpawnNextTetronimo ();
-			}
-
-			fall = Time.time;
+			MoveDown ();
 
 		} else if (Input.GetKeyDown (KeyCode.X)) {
 
@@ -248,8 +107,90 @@ public class Tetromino : MonoBehaviour {
 	}
 
 
+	/// <summary>
+	/// Move and rotate Tetromino at different direction and along different axis
+	/// </summary>
+	public void MoveDown () {
+
+		if (movedImmediateVertical) {
+
+			if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+				buttonDownWaitTimer += Time.deltaTime;
+				return;
+			}
+
+			if (verticalTimer < continuosVerticalSpeed) {
+
+				verticalTimer += Time.deltaTime;
+				return;
+			}
+		}
+
+		if (!movedImmediateVertical) {
+			movedImmediateVertical = true;
+		}
+		verticalTimer = 0;
+
+		transform.position += new Vector3 (0, -1, 0);
+
+		if (CheckIsValidPosition ()) {
+
+			if (Input.GetKey (KeyCode.Space)) {
+
+				PlayMoveAudio ();
+			}
+
+			FindObjectOfType<Game> ().UpdateGrid (this);
+
+		} else {
+
+			Destroy (FindObjectOfType<Shadow> ().gameObject);
+
+			PlayLandAudio ();
+
+			transform.position += new Vector3 (0, 1, 0);
+
+			FindObjectOfType<Game> ().DeleteRow ();
+
+			if (FindObjectOfType<Game> ().CheckIsAboveGrid (this)) {
+
+				FindObjectOfType<Game> ().GameOver ();
+			}
+
+			enabled = false;
+
+			Game.currentScore += individualScore;
+
+			FindObjectOfType<Game> ().SpawnNextTetronimo ();
+		}
+
+		fall = Time.time;
+	}
 
 	public void MoveXPos () {
+
+		if (movedImmediateHorizontal) {
+
+			if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+				buttonDownWaitTimer += Time.deltaTime;
+				return;
+			}
+
+			if (horizontalTimer < continuosHorizontalSpeed) {
+
+				horizontalTimer += Time.deltaTime;
+
+				return;
+			}
+		}
+
+		if (!movedImmediateHorizontal) {
+			movedImmediateHorizontal = true;
+		}
+
+		horizontalTimer = 0;
 
 		transform.position += new Vector3 (1, 0, 0);
 
@@ -266,6 +207,28 @@ public class Tetromino : MonoBehaviour {
 
 	public void MoveXNeg () {
 
+		if (movedImmediateHorizontal) {
+
+			if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+				buttonDownWaitTimer += Time.deltaTime;
+				return;
+			}
+
+			if (horizontalTimer < continuosHorizontalSpeed) {
+
+				horizontalTimer += Time.deltaTime;
+
+				return;
+			}
+		}
+
+		if (!movedImmediateHorizontal) {
+			movedImmediateHorizontal = true;
+		}
+
+		horizontalTimer = 0;
+
 		transform.position += new Vector3 (-1, 0, 0);
 
 		if (CheckIsValidPosition ()) {
@@ -281,6 +244,28 @@ public class Tetromino : MonoBehaviour {
 
 	public void MoveZPos () {
 
+		if (movedImmediateHorizontal) {
+
+			if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+				buttonDownWaitTimer += Time.deltaTime;
+				return;
+			}
+
+			if (horizontalTimer < continuosHorizontalSpeed) {
+
+				horizontalTimer += Time.deltaTime;
+
+				return;
+			}
+		}
+
+		if (!movedImmediateHorizontal) {
+			movedImmediateHorizontal = true;
+		}
+
+		horizontalTimer = 0;
+
 		transform.position += new Vector3 (0, 0, 1);
 
 		if (CheckIsValidPosition ()) {
@@ -295,6 +280,28 @@ public class Tetromino : MonoBehaviour {
 	}
 
 	public void MoveZNeg () {
+
+		if (movedImmediateHorizontal) {
+
+			if (buttonDownWaitTimer < buttonDownWaitMax) {
+
+				buttonDownWaitTimer += Time.deltaTime;
+				return;
+			}
+
+			if (horizontalTimer < continuosHorizontalSpeed) {
+
+				horizontalTimer += Time.deltaTime;
+
+				return;
+			}
+		}
+
+		if (!movedImmediateHorizontal) {
+			movedImmediateHorizontal = true;
+		}
+
+		horizontalTimer = 0;
 
 		transform.position += new Vector3 (0, 0, -1);
 
