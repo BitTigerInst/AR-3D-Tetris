@@ -21,6 +21,8 @@ public class Game : MonoBehaviour {
 	private int numberOfRowsThisTurn = 0;
 
 	public Text hud_score;
+	public Text hud_level;
+	public Text hud_rows;
 
 	public static int currentScore = 0;
 
@@ -73,6 +75,8 @@ public class Game : MonoBehaviour {
 	public void UpdateUI () {
 
 		hud_score.text = currentScore.ToString ();
+		hud_level.text = currentLevel.ToString ();
+		hud_rows.text = numOfRowsCleared.ToString ();
 	}
 
 	public void UpdateScore () {
@@ -103,21 +107,21 @@ public class Game : MonoBehaviour {
 
 	public void ClearedOneRow () {
 
-		currentScore += scoreOneLine;
+		currentScore += scoreOneLine + (currentLevel * 30);
 
 		numOfRowsCleared++;
 	}
 
 	public void ClearedTwoRows () {
 
-		currentScore += scoreTwoLine;
+		currentScore += scoreTwoLine + (currentLevel * 40);
 
 		numOfRowsCleared += 2;
 	}
 
 	public void ClearedThreeRows () {
 
-		currentScore += scoreThreeLine;
+		currentScore += scoreThreeLine + (currentLevel * 50);
 
 		numOfRowsCleared += 3;
 	}
