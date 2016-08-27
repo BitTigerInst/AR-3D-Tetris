@@ -36,6 +36,8 @@ public class Tetromino : MonoBehaviour {
 
 		fallSpeed = FindObjectOfType<Game> ().fallSpeed;
 
+		Debug.Log ("fall speed of tetro:" + fallSpeed);
+
 	}
 
 	// Update is called once per frame

@@ -9,6 +9,9 @@ public class Game : MonoBehaviour {
 	public int currentLevel = 0;
 	private int numOfRowsCleared = 0;
 
+	public static bool startingAtLevelZero;
+	public static int startingLevel;
+
 	public static int gridWidth = 4;
 	public static int gridHeight = 12;
 
@@ -45,6 +48,9 @@ public class Game : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		UpdateLevel ();
+		UpdateSpeed ();
+
 		SpawnNextTetronimo ();
 
 		audioSource = GetComponent<AudioSource> ();
@@ -64,12 +70,16 @@ public class Game : MonoBehaviour {
 
 	void UpdateLevel () {
 
-		currentLevel = numOfRowsCleared / 10;
+		currentLevel = startingLevel + numOfRowsCleared / 10;
+
+//		Debug.Log ("current level" + currentLevel);
 	}
 
 	void UpdateSpeed () {
 
 		fallSpeed = 1.0f - ((float)currentLevel * 0.1f);
+
+//		Debug.Log ("fall speed in game" + fallSpeed);
 	}
 
 	public void UpdateUI () {
