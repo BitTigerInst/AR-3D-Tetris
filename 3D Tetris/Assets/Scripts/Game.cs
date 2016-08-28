@@ -29,6 +29,8 @@ public class Game : MonoBehaviour {
 
 	public static int currentScore = 0;
 
+	private int startingHighScore;
+
 	public AudioClip clearRowSound;
 
 	private AudioSource audioSource;
@@ -48,12 +50,16 @@ public class Game : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
+		currentScore = 0;
+
 		UpdateLevel ();
 		UpdateSpeed ();
 
 		SpawnNextTetronimo ();
 
 		audioSource = GetComponent<AudioSource> ();
+
+		startingHighScore = PlayerPrefs.GetInt ("HighScore"); 
 	}
 	
 	// Update is called once per frame
@@ -109,10 +115,17 @@ public class Game : MonoBehaviour {
 				
 			numberOfRowsThisTurn = 0;
 
+			UpdateHighScore ();
+
 			PlayClearRowAudio ();
 		}
+	}
 
+	public void UpdateHighScore () {
 
+		if (currentScore > startingHighScore) {
+			PlayerPrefs.SetInt ("HighScore", currentScore);
+		}
 	}
 
 	public void ClearedOneRow () {

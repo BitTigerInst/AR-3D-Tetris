@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class GameMenu : MonoBehaviour {
 
 	public Text levelText;
+	public Text highScoreText;
 
 	// Use this for initialization
 	void Start () {
 	
 		levelText.text = "0";
+
+		highScoreText.text = PlayerPrefs.GetInt ("HighScore").ToString ();
+
 	}
 	
 	// Update is called once per frame
@@ -27,5 +31,15 @@ public class GameMenu : MonoBehaviour {
 
 		Game.startingLevel = (int)value;
 		levelText.text = value.ToString ();
+	}
+
+	public void PlayAgain() {
+
+		Application.LoadLevel ("testing");
+	}
+
+	public void BackToGameMenu () {
+
+		Application.LoadLevel ("GameMenu");
 	}
 }
