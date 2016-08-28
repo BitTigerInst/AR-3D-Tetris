@@ -30,6 +30,9 @@ public class Game : MonoBehaviour {
 	public static int currentScore = 0;
 
 	private int startingHighScore;
+	private int startingHighScore2;
+	private int startingHighScore3;
+
 
 	public AudioClip clearRowSound;
 
@@ -60,6 +63,8 @@ public class Game : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 
 		startingHighScore = PlayerPrefs.GetInt ("HighScore"); 
+		startingHighScore2 = PlayerPrefs.GetInt ("HighScore2");
+		startingHighScore3 = PlayerPrefs.GetInt ("HighScore3");
 	}
 	
 	// Update is called once per frame
@@ -115,8 +120,6 @@ public class Game : MonoBehaviour {
 				
 			numberOfRowsThisTurn = 0;
 
-			UpdateHighScore ();
-
 			PlayClearRowAudio ();
 		}
 	}
@@ -124,7 +127,19 @@ public class Game : MonoBehaviour {
 	public void UpdateHighScore () {
 
 		if (currentScore > startingHighScore) {
+
+			PlayerPrefs.SetInt ("HighScore3", startingHighScore2);
+			PlayerPrefs.SetInt ("HighScore2", startingHighScore);
 			PlayerPrefs.SetInt ("HighScore", currentScore);
+
+		} else if (currentScore > startingHighScore2) {
+
+			PlayerPrefs.SetInt ("HighScore3", startingHighScore2);
+			PlayerPrefs.SetInt ("HighScore2", currentScore);
+
+		} else if (currentScore > startingHighScore3) {
+
+			PlayerPrefs.SetInt ("HighScore3", currentScore);
 		}
 	}
 
@@ -360,6 +375,8 @@ public class Game : MonoBehaviour {
 
 
 	public void GameOver() {
+
+		UpdateHighScore ();
 
 		Application.LoadLevel ("GameOver");
 	}
