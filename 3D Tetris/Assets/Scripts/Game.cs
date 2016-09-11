@@ -46,7 +46,7 @@ public class Game : MonoBehaviour {
 	private bool gameStarted = false;
 
 	private Vector3 initTetrominoPosition = new Vector3 (2.0f, 15.0f, 2.0f);
-	private Vector3 previewTetrominoPosition = new Vector3 (-5.0f, -1.0f, 6.0f);
+	private Vector3 previewTetrominoPosition = new Vector3 (-4.0f, -1.0f, 5.0f);
 
 	public GameObject liveTetromino;
 
