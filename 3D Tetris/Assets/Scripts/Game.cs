@@ -13,7 +13,7 @@ public class Game : MonoBehaviour {
 	public static int startingLevel;
 
 	public static int gridWidth = 5;
-	public static int gridHeight = 12;
+	public static int gridHeight = 15;
 
 	public static Transform[ , , ] grid = new Transform[gridWidth, gridHeight, gridWidth];
 
@@ -45,7 +45,7 @@ public class Game : MonoBehaviour {
 
 	private bool gameStarted = false;
 
-	private Vector3 initTetrominoPosition = new Vector3 (1.0f, 12.0f, 1.0f);
+	private Vector3 initTetrominoPosition = new Vector3 (2.0f, 15.0f, 2.0f);
 	private Vector3 previewTetrominoPosition = new Vector3 (-5.0f, -1.0f, 6.0f);
 
 	public GameObject liveTetromino;
