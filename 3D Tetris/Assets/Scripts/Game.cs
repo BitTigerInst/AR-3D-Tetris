@@ -12,7 +12,7 @@ public class Game : MonoBehaviour {
 	public static bool startingAtLevelZero;
 	public static int startingLevel;
 
-	public static int gridWidth = 4;
+	public static int gridWidth = 5;
 	public static int gridHeight = 12;
 
 	public static Transform[ , , ] grid = new Transform[gridWidth, gridHeight, gridWidth];
