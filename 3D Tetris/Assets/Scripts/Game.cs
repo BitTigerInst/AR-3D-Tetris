@@ -12,8 +12,8 @@ public class Game : MonoBehaviour {
 	public static bool startingAtLevelZero;
 	public static int startingLevel;
 
-	public static int gridWidth = 4;
-	public static int gridHeight = 12;
+	public static int gridWidth = 5;
+	public static int gridHeight = 15;
 
 	public static Transform[ , , ] grid = new Transform[gridWidth, gridHeight, gridWidth];
 
@@ -45,8 +45,8 @@ public class Game : MonoBehaviour {
 
 	private bool gameStarted = false;
 
-	private Vector3 initTetrominoPosition = new Vector3 (1.0f, 12.0f, 1.0f);
-	private Vector3 previewTetrominoPosition = new Vector3 (-5.0f, -1.0f, 6.0f);
+	private Vector3 initTetrominoPosition = new Vector3 (2.0f, 15.0f, 2.0f);
+	private Vector3 previewTetrominoPosition = new Vector3 (-4.0f, -1.0f, 5.0f);
 
 	public GameObject liveTetromino;
 
@@ -347,7 +347,7 @@ public class Game : MonoBehaviour {
 	}
 
 	string GetRandomTetromino () {
-		int randomTetromino = Random.Range (1, 6);
+		int randomTetromino = Random.Range (1, 8);
 
 		string randomTetrominoName = "";
 
@@ -367,6 +367,12 @@ public class Game : MonoBehaviour {
 			break;
 		case 5:
 			randomTetrominoName = "T";
+			break;
+		case 6:
+			randomTetrominoName = "claw";
+			break;
+		case 7:
+			randomTetrominoName = "Z";
 			break;
 		}
 
