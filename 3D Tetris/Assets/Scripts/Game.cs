@@ -347,7 +347,7 @@ public class Game : MonoBehaviour {
 	}
 
 	string GetRandomTetromino () {
-		int randomTetromino = Random.Range (1, 6);
+		int randomTetromino = Random.Range (1, 8);
 
 		string randomTetrominoName = "";
 
@@ -367,6 +367,12 @@ public class Game : MonoBehaviour {
 			break;
 		case 5:
 			randomTetrominoName = "T";
+			break;
+		case 6:
+			randomTetrominoName = "claw";
+			break;
+		case 7:
+			randomTetrominoName = "Z";
 			break;
 		}
 
