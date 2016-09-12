@@ -14,7 +14,7 @@ public class GameMenu : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 	
-		levelText.text = "0";
+//		levelText.text = "0";
 
 		highScoreText.text = PlayerPrefs.GetInt ("HighScore").ToString ();
 		highScoreText2.text = PlayerPrefs.GetInt ("HighScore2").ToString ();
