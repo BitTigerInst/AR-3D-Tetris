@@ -32,6 +32,11 @@ public class GameMenu : MonoBehaviour {
 		Application.LoadLevel ("testing");
 	}
 
+	public void PlayGameARmode () {
+		
+		Application.LoadLevel ("level");
+	}
+
 	public void LevelChanged (float value) {
 
 		Game.startingLevel = (int)value;
