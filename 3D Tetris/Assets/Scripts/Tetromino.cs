@@ -64,20 +64,30 @@ public class Tetromino : MonoBehaviour {
 
 	}
 
+	public void KeyUpHorizontal () {
+
+		horizontalTimer = 0;
+		movedImmediateHorizontal = false;
+		buttonDownWaitTimerHorizontal = 0;
+	}
+
+	public void KeyUpVertical () {
+
+		verticalTimer = 0;
+		movedImmediateVertical = false;
+		buttonDownWaitTimerVertical = 0;
+	}
+
 	void CheckUserInput () {
 
 		if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.DownArrow)) {
 
-			horizontalTimer = 0;
-			movedImmediateHorizontal = false;
-			buttonDownWaitTimerHorizontal = 0;
+			KeyUpHorizontal ();
 		}
 
 		if (Input.GetKeyUp (KeyCode.Space)) {
 
-			verticalTimer = 0;
-			movedImmediateVertical = false;
-			buttonDownWaitTimerVertical = 0;
+			KeyUpVertical ();
 		}
 
 		//- Moving in four directions

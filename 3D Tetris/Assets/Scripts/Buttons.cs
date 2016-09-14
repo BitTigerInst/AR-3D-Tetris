@@ -15,6 +15,8 @@ public class Buttons : MonoBehaviour {
 
 	void OnMouseDown() {
 
+		Debug.Log ("on mouse down!");
+
 		Tetromino tetro = FindObjectOfType<Game> ().liveTetromino.GetComponent<Tetromino>();
 
 		switch (name) {
@@ -43,5 +45,9 @@ public class Buttons : MonoBehaviour {
 
 		}
 
-	} 
+		tetro.KeyUpHorizontal ();
+
+	}
+
+
 }
