@@ -13,13 +13,13 @@ public class GameMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
-//		levelText.text = "0";
 
-		highScoreText.text = PlayerPrefs.GetInt ("HighScore").ToString ();
-		highScoreText2.text = PlayerPrefs.GetInt ("HighScore2").ToString ();
-		highScoreText3.text = PlayerPrefs.GetInt ("HighScore3").ToString ();
+		if (highScoreText != null) {
 
+			highScoreText.text = PlayerPrefs.GetInt ("HighScore").ToString ();
+			highScoreText2.text = PlayerPrefs.GetInt ("HighScore2").ToString ();
+			highScoreText3.text = PlayerPrefs.GetInt ("HighScore3").ToString ();
+		}
 	}
 	
 	// Update is called once per frame
