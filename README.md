@@ -10,7 +10,7 @@ Using Unity and Vuforia SDK to build an augmented reality tetris game. Recognizi
 
 ## Screenshots
 
-<img src="./Resources/GameMenu.png"  width="400" /> <img src="./Resources/GameScreenshot.png"  width="400" />
+<img src="./Resources/GameMenu.png"  width="350" /> <img src="./Resources/GameScreenshot.png"  width="350" />
 
 ## Plan
 
