@@ -8,6 +8,10 @@ Testing on iOS 10...
 ## Description
 Using Unity and Vuforia SDK to build an augmented reality tetris game. Recognizing and tracking a marker, the game allows users to play 3D tetris right on their table through handheld displays (iPhone).
 
+## Screenshots
+
+<img src="./Resources/GameMenu.png"  width="400" /> <img src="./Resources/GameScreenshot.png"  width="400" />
+
 ## Plan
 
 ### Todo List
@@ -18,7 +22,6 @@ Using Unity and Vuforia SDK to build an augmented reality tetris game. Recognizi
 - [x] 3D tetris basic implementation
 - [x] Scoring system, Sound system
 - [x] Advanced features and UI
-- [ ] Testing and Documentation
 
 ### Time Schedule
 

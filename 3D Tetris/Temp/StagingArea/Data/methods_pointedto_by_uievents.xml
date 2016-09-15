@@ -1,0 +1,11 @@
+<linker>
+	<assembly fullname="Assembly-CSharp">
+		<type fullname="GameMenu">
+			<method name="PlayGame"/>
+			<method name="PlayGameARmode"/>
+			<method name="LevelChanged"/>
+			<method name="BackToGameMenu"/>
+			<method name="PlayAgain"/>
+		</type>
+	</assembly>
+</linker>

@@ -29,14 +29,23 @@ public class Tetromino : MonoBehaviour {
 	private bool movedImmediateVertical = false;
 
 
+	//- Touch movement variables
+	private int touchSensitivityHorizontal = 10;
+	private int touchSensitivityVertical = 2;
+
+	Vector2 previousUnitPosition = Vector2.zero;
+	Vector2 direction = Vector2.zero;
+
+	bool moved = false;
+
+
+
 	// Use this for initialization
 	void Start () {
 
 		audioSource = GetComponent<AudioSource> ();
 
 		fallSpeed = FindObjectOfType<Game> ().fallSpeed;
-
-		Debug.Log ("fall speed of tetro:" + fallSpeed);
 
 	}
 
@@ -79,6 +88,40 @@ public class Tetromino : MonoBehaviour {
 	}
 
 	void CheckUserInput () {
+
+		if (Input.touchCount > 0) {
+
+			Touch t = Input.GetTouch (0);
+
+			if (t.phase == TouchPhase.Began) {
+
+				previousUnitPosition = new Vector2 (t.position.x, t.position.y);
+				
+			} else if (t.phase == TouchPhase.Moved) {
+
+				Vector2 touchDeltaPosition = t.deltaPosition;
+				direction = touchDeltaPosition.normalized;
+
+				if (Mathf.Abs (t.position.x - previousUnitPosition.x) <= touchSensitivityHorizontal) {
+
+					if (Mathf.Abs (t.position.y - previousUnitPosition.y) >= touchSensitivityVertical) {
+
+						if (direction.y < 0) {
+
+							MoveDown ();
+							previousUnitPosition = t.position;
+							moved = true;
+						}
+
+					}
+				}
+
+			} else if (t.phase == TouchPhase.Ended) {
+
+				moved = false;
+			}
+
+		}
 
 		if (Input.GetKeyUp (KeyCode.LeftArrow) || Input.GetKeyUp (KeyCode.RightArrow) || Input.GetKeyUp (KeyCode.UpArrow) || Input.GetKeyDown (KeyCode.DownArrow)) {
 
