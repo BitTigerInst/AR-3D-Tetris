@@ -14,28 +14,6 @@ Using Unity and Vuforia SDK to build an augmented reality tetris game. Recognizi
 
 ![Game Demo GIF](./Resources/GameDemoSmall.gif)
 
-## Plan
-
-### Todo List
-- [x] Setup development environment
-- [x] Marker Tracking 
-- [x] basic 2D tetris game implementation
-- [x] 2D tetris game using 3D model
-- [x] 3D tetris basic implementation
-- [x] Scoring system, Sound system
-- [x] Advanced features and UI
-
-### Time Schedule
-
-| Stage | Start  | End | Goals |
-| ------------- | ------------- | ------------- | ------------- |
-| 1 | 07/18/16  | 07/24/16  | Project Selection, Plan Discussion, and Proposal Draft Writing |
-| 2 | 07/25/16  | 07/31/16  | System Design, Resource Discovery, Marker Tracking  |
-| 3 | 08/01/16  | 08/07/16  | 2D game with simple 3D model and animation  |
-| 4 | 08/08/16  | 08/14/16  | 3D game with simple 3D model and animation  |
-| 5 | 08/15/16  | 08/21/16  | Using refined 3d model and animation  |
-| 6 | 08/22/16  | 08/28/16  | Documentation, Release the game on App Store  |
-
 ## Resource
 - [BitTiger Project: AR 3D Gift Card](https://www.bittiger.io/videos/WgJ3wYzX5NGiDEkNi/pZZmpXCYiQ6c6ZRdm)
 - [Unity 3D](http://unity3d.com/)
